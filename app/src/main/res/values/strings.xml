@@ -9,7 +9,8 @@
     <string name="title">Title</string>
     <string name="class_label">Class</string>
     <string name="additional_information">Additional Information</string>
-
+    <string name="title_activity_filter">Choose a filter</string>
+    <string name="confirmFilters">Confirm</string>
 
     <!--Strings for spinner-->
     <string name="location_prompt">Choose a location</string>
@@ -19,7 +20,15 @@
         <item>Library</item>
         <item>Tech Square</item>
     </string-array>
-    <string name="title_activity_filter">filterActivity</string>
 
-    <string name="hello_world">Hello world!</string>
+    <string name="classes_prompt">Pick a class</string>
+    <string-array name="classes_array">
+        <item>CS 2110</item>
+        <item>CHEM 1212</item>
+        <item>CHEM 1211</item>
+        <item>CS 1331</item>
+        <item>MATH 1100</item>
+        <item>CS 2050</item>
+        <item>ENGL 1101</item>
+    </string-array>
 </resources>
