@@ -18,7 +18,7 @@ import java.util.List;
 
 import com.firebase.client.Firebase;
 
-import appathon.groupstudy.Firebase.firebase.IFirebaseSource;
+import appathon.groupstudy.Firebase.IFirebaseSource;
 import appathon.groupstudy.R;
 
 

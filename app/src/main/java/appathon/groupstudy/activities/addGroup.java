@@ -11,13 +11,21 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.firebase.client.Firebase;
+
+import appathon.groupstudy.Firebase.FirebaseSource;
+import appathon.groupstudy.Firebase.IFirebaseSource;
 import appathon.groupstudy.R;
+import appathon.groupstudy.models.Post;
 
 public class addGroup extends ActionBarActivity {
 
     private Spinner spinner;
     private EditText title;
     private EditText class_text;
+    private EditText location;
+    private EditText addInfo;
+    private IFirebaseSource mFirebaseSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +34,11 @@ public class addGroup extends ActionBarActivity {
         addListenerOnSpinnnerItemSeletion();
         title = (EditText)findViewById(R.id.title_textbox);
         class_text = (EditText)findViewById(R.id.class_textbox);
+        location = (EditText)findViewById(R.id.class_textbox);
+        addInfo = (EditText)findViewById(R.id.class_textbox);
+        Firebase.setAndroidContext(this);
+        mFirebaseSource = new FirebaseSource(null);
+
     }
 
     public void addListenerOnSpinnnerItemSeletion(){
@@ -50,7 +63,7 @@ public class addGroup extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_add_group, menu);
+        getMenuInflater().inflate(R.menu.menu_add_post, menu);
         return true;
     }
 
@@ -64,8 +77,14 @@ public class addGroup extends ActionBarActivity {
         //Submit button was pressed
         if(id == R.id.submit_check){
             //Need to send things to Firebase
-
-
+            String postTitle = title.getText().toString();
+            String content = class_text.getText().toString();
+            String userLocation = location.getText().toString();
+            String additionalInfo = addInfo.getText().toString();
+            Post post = new Post(postTitle, content, userLocation, additionalInfo);
+            mFirebaseSource.AddPost(post);
+            //post now has id set.
+            Toast.makeText(addGroup.this, "Submit Clicked!", Toast.LENGTH_SHORT).show();
             //then close the app
             finish();
 
