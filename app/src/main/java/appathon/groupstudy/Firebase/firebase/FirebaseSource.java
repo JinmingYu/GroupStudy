@@ -25,7 +25,7 @@ public class FirebaseSource implements IFirebaseSource{
     private final String FIREBASE_URL = "http://groupstudy.firebaseio.com";
 
     public FirebaseSource() {
-        root = new Firebase("http://groupstudy.firebaseio.com");
+        root = new Firebase(FIREBASE_URL);
         postsRef = root.child("posts");
         usersRef = root.child("users");
     }
