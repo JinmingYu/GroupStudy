@@ -13,6 +13,7 @@ import appathon.groupstudy.activities.IUpdateActivity;
 import appathon.groupstudy.models.Post;
 import appathon.groupstudy.models.User;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -55,21 +56,36 @@ public class FirebaseSource implements IFirebaseSource {
         postsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Map<String, Map<String, String>> posts = (Map) dataSnapshot.getValue();
+                Map<String, Map<String, String>> postsJson = (Map) dataSnapshot.getValue();
+                List<Post> posts = new ArrayList<>();
+
                 fillMaps.clear();
 
-                for(String postId : posts.keySet()) {
+                // Create the Posts list from the json
+                for(String postId : postsJson.keySet()) {
 
-                    Map<String, String> postInfo = posts.get(postId);
+                    Map<String, String> postInfo = postsJson.get(postId);
+                    posts.add(new Post(
+                            postInfo.get("title"),
+                            postInfo.get("className"),
+                            postInfo.get("location"),
+                            postInfo.get("additionalInformation")
+                    ));
+                }
 
+                // Filter the list
+
+                // Add the posts to the listview's model
+                for (Post post : posts) {
                     HashMap<String, String> map = new HashMap<String, String>();
-                    map.put("title", postInfo.get("title"));
-                    map.put("class", postInfo.get("className"));
-                    map.put("location", postInfo.get("location"));
-                    map.put("additional_info", postInfo.get("additionalInformation"));
+                    map.put("title", post.getTitle());
+                    map.put("class", post.getClassName());
+                    map.put("location", post.getLocation());
+                    map.put("additional_info", post.getAdditionalInformation());
                     fillMaps.add(map);
                 }
 
+                // Redraw the listview
                 adapter.notifyDataSetChanged();
             }
 
