@@ -24,13 +24,13 @@ public class addGroup extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_group);
         addListenerOnSpinnnerItemSeletion();
+        title = (EditText)findViewById(R.id.title_textbox);
+        class_text = (EditText)findViewById(R.id.class_textbox);
     }
 
     public void addListenerOnSpinnnerItemSeletion(){
+
         spinner = (Spinner)findViewById(R.id.spinner);
-        //Waits for selection of items
-        title = (EditText)findViewById(R.id.title_textbox);
-        class_text = (EditText)findViewById(R.id.class_textbox);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -64,6 +64,7 @@ public class addGroup extends ActionBarActivity {
         //Submit button was pressed
         if(id == R.id.submit_check){
             //Need to send things to Firebase
+
 
             //then close the app
             finish();
