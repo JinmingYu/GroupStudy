@@ -1,5 +1,7 @@
 package appathon.groupstudy.Firebase;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.widget.SimpleAdapter;
 
@@ -8,6 +10,7 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import appathon.groupstudy.models.Post;
 
 import appathon.groupstudy.activities.IUpdateActivity;
 import appathon.groupstudy.models.Post;
@@ -25,6 +28,7 @@ public class FirebaseSource implements IFirebaseSource {
     private Firebase postsRef;
     private Firebase usersRef;
     private final String FIREBASE_URL = "http://groupstudy.firebaseio.com";
+    List<Post> posts;
 
     public FirebaseSource()
     {
@@ -52,12 +56,20 @@ public class FirebaseSource implements IFirebaseSource {
         return usersRef.child(user_id);
     }
 
+    public List<Post> filter(List<Post> posts, List<String> filters){
+    List<Post> filteredList = new ArrayList<Post>();
+        for (Post p : posts) {
+            if (filters.contains(p.getClassName()))
+                filteredList.add(p);
+        }
+        return filteredList;
+    }
     public void bindToList(final List<HashMap<String, String>> fillMaps, final SimpleAdapter adapter) {
         postsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Map<String, Map<String, String>> postsJson = (Map) dataSnapshot.getValue();
-                List<Post> posts = new ArrayList<>();
+                posts = new ArrayList<>();
 
                 fillMaps.clear();
 
