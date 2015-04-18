@@ -1,6 +1,16 @@
 package appathon.groupstudy.Firebase.firebase;
 
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+
+import java.util.HashMap;
+import java.util.List;
+
 import appathon.groupstudy.activities.IUpdateActivity;
 import appathon.groupstudy.models.Post;
 import appathon.groupstudy.models.User;
@@ -14,7 +24,11 @@ public class FirebaseSource implements IFirebaseSource{
     private IUpdateActivity updateableActivity;
     private final String FIREBASE_URL = "http://groupstudy.firebaseio.com";
 
-
+    public FirebaseSource() {
+        root = new Firebase("http://groupstudy.firebaseio.com");
+        postsRef = root.child("posts");
+        usersRef = root.child("users");
+    }
 
     @Override
     public void AddPost(Post post)
@@ -32,5 +46,18 @@ public class FirebaseSource implements IFirebaseSource{
     @Override
     public Firebase getUser(String user_id) {
         return usersRef.child(user_id);
+    }
+
+    public void bindToListView(List<HashMap<String, String>> fillMaps, SimpleAdapter adapter) {
+        postsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                System.out.println(snapshot.getValue());
+            }
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+                System.out.println("The read failed: " + firebaseError.getMessage());
+            }
+        });
     }
 }
