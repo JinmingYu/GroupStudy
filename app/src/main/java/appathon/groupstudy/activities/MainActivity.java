@@ -1,4 +1,4 @@
-package appathon.groupstudy;
+package appathon.groupstudy.activities;
 
 import android.database.DataSetObserver;
 import android.support.v7.app.ActionBarActivity;
@@ -15,8 +15,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+//import com.firebase.client.Firebase;
+
+import appathon.groupstudy.R;
+
 
 public class MainActivity extends ActionBarActivity {
+    //Firebase rootRef = new Firebase("https://groupstudy.firebaseio.com/web/data");
+//    private IFirebaseSource firebaseSource;
 
     ListView listView;
 
@@ -45,6 +51,8 @@ public class MainActivity extends ActionBarActivity {
         // fill in the grid_item layout
         SimpleAdapter adapter = new SimpleAdapter(this, fillMaps, R.layout.study_group_list_item, from, to);
         listView.setAdapter(adapter);
+
+        //Firebase.setAndroidContext(this);
     }
 
 
