@@ -1,6 +1,6 @@
 package appathon.groupstudy.models;
 
-//import com.firebase.client.Firebase;
+import com.firebase.client.Firebase;
 
 import java.io.Serializable;
 import java.util.HashMap;

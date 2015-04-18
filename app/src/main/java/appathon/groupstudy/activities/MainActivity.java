@@ -15,14 +15,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-//import com.firebase.client.Firebase;
+import com.firebase.client.Firebase;
 
+import appathon.groupstudy.Firebase.firebase.IFirebaseSource;
 import appathon.groupstudy.R;
 
 
 public class MainActivity extends ActionBarActivity {
     //Firebase rootRef = new Firebase("https://groupstudy.firebaseio.com/web/data");
-//    private IFirebaseSource firebaseSource;
+    private IFirebaseSource firebaseSource;
 
     ListView listView;
 
