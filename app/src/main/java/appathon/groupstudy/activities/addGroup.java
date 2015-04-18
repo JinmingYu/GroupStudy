@@ -23,7 +23,7 @@ public class addGroup extends ActionBarActivity {
     private Spinner spinner;
     private EditText title;
     private EditText class_text;
-    private EditText location;
+    private Spinner location;
     private EditText addInfo;
     private IFirebaseSource mFirebaseSource;
 
@@ -34,8 +34,8 @@ public class addGroup extends ActionBarActivity {
         addListenerOnSpinnnerItemSeletion();
         title = (EditText)findViewById(R.id.title_textbox);
         class_text = (EditText)findViewById(R.id.class_textbox);
-        location = (EditText)findViewById(R.id.class_textbox);
-        addInfo = (EditText)findViewById(R.id.class_textbox);
+        location = (Spinner)findViewById(R.id.spinner);
+        addInfo = (EditText)findViewById(R.id.additional_info_textbox);
         Firebase.setAndroidContext(this);
         mFirebaseSource = new FirebaseSource(null);
 
@@ -79,7 +79,7 @@ public class addGroup extends ActionBarActivity {
             //Need to send things to Firebase
             String postTitle = title.getText().toString();
             String content = class_text.getText().toString();
-            String userLocation = location.getText().toString();
+            String userLocation = location.getSelectedItem().toString();
             String additionalInfo = addInfo.getText().toString();
             Post post = new Post(postTitle, content, userLocation, additionalInfo);
             mFirebaseSource.AddPost(post);
