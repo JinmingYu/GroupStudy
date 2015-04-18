@@ -18,6 +18,7 @@ import java.util.List;
 
 import com.firebase.client.Firebase;
 
+import appathon.groupstudy.Firebase.FirebaseSource;
 import appathon.groupstudy.Firebase.IFirebaseSource;
 import appathon.groupstudy.R;
 
@@ -54,7 +55,9 @@ public class MainActivity extends ActionBarActivity {
         SimpleAdapter adapter = new SimpleAdapter(this, fillMaps, R.layout.study_group_list_item, from, to);
         listView.setAdapter(adapter);
 
-        //Firebase.setAndroidContext(this);
+        Firebase.setAndroidContext(this);
+        firebaseSource = new FirebaseSource();
+        firebaseSource.bindToList(fillMaps, adapter);
     }
 
 

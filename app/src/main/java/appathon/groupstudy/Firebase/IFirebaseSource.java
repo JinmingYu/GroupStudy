@@ -1,11 +1,14 @@
 package appathon.groupstudy.Firebase;
 
+import android.widget.SimpleAdapter;
+
 import com.firebase.client.Firebase;
 import com.firebase.client.Firebase;
 
 import appathon.groupstudy.models.Post;
 import appathon.groupstudy.models.User;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -18,5 +21,6 @@ public interface IFirebaseSource
 
     Firebase getUser(String user_id);
 
+    void bindToList(List<HashMap<String, String>> fillMaps, SimpleAdapter adapter);
 
 }

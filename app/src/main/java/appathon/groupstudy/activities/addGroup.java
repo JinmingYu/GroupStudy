@@ -37,7 +37,7 @@ public class addGroup extends ActionBarActivity {
         location = (Spinner)findViewById(R.id.spinner);
         addInfo = (EditText)findViewById(R.id.additional_info_textbox);
         Firebase.setAndroidContext(this);
-        mFirebaseSource = new FirebaseSource(null);
+        mFirebaseSource = new FirebaseSource();
 
     }
 
