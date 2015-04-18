@@ -1,4 +1,4 @@
-package appathon.groupstudy;
+package appathon.groupstudy.activities;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.firebase.client.Firebase;
+
+import appathon.groupstudy.R;
 
 
 public class MainActivity extends ActionBarActivity {
