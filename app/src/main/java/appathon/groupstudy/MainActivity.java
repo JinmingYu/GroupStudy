@@ -1,17 +1,50 @@
 package appathon.groupstudy;
 
+import android.database.DataSetObserver;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        listView = (ListView) findViewById(R.id.listView);
+
+        // create the grid item mapping
+        String[] from = new String[] {"title", "class", "location", "additional_info"};
+        int[] to = new int[] { R.id.title, R.id.class_name, R.id.location, R.id.additional_info};
+
+        // prepare the list of all records
+        List<HashMap<String, String>> fillMaps = new ArrayList<HashMap<String, String>>();
+        for(int i = 0; i < 10; i++){
+            HashMap<String, String> map = new HashMap<String, String>();
+            map.put("title", "Title " + i);
+            map.put("class", "CS " + i);
+            map.put("location", "Klaus");
+            map.put("additional_info", "Study group in Klaus 1234. Come join us. We have pizza!");
+            fillMaps.add(map);
+        }
+
+        // fill in the grid_item layout
+        SimpleAdapter adapter = new SimpleAdapter(this, fillMaps, R.layout.study_group_list_item, from, to);
+        listView.setAdapter(adapter);
     }
 
 
