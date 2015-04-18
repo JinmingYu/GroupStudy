@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="class_background">#5158BB</color>
+    <color name="actionBar_background">#ec4bc1d4</color>
 </resources>

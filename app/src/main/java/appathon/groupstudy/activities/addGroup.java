@@ -22,7 +22,7 @@ public class addGroup extends ActionBarActivity {
 
     private Spinner spinner;
     private EditText title;
-    private EditText class_text;
+    private Spinner class_text;
     private Spinner location;
     private EditText addInfo;
     private IFirebaseSource mFirebaseSource;
@@ -33,7 +33,7 @@ public class addGroup extends ActionBarActivity {
         setContentView(R.layout.activity_add_group);
         addListenerOnSpinnnerItemSeletion();
         title = (EditText)findViewById(R.id.title_textbox);
-        class_text = (EditText)findViewById(R.id.class_textbox);
+        class_text = (Spinner)findViewById(R.id.class_choices);
         location = (Spinner)findViewById(R.id.spinner);
         addInfo = (EditText)findViewById(R.id.additional_info_textbox);
         Firebase.setAndroidContext(this);
@@ -47,9 +47,9 @@ public class addGroup extends ActionBarActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(parent.getContext(),
-                        "OnItemSelectedListener :" + parent.getItemAtPosition(position).toString(),
-                        Toast.LENGTH_SHORT).show();
+//                Toast.makeText(parent.getContext(),
+//                        "OnItemSelectedListener :" + parent.getItemAtPosition(position).toString(),
+//                        Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -77,8 +77,9 @@ public class addGroup extends ActionBarActivity {
         //Submit button was pressed
         if(id == R.id.submit_check){
             //Need to send things to Firebase
+            //TODO:Make sure information entered isn't NULL
             String postTitle = title.getText().toString();
-            String content = class_text.getText().toString();
+            String content = class_text.getSelectedItem().toString();
             String userLocation = location.getSelectedItem().toString();
             String additionalInfo = addInfo.getText().toString();
             Post post = new Post(postTitle, content, userLocation, additionalInfo);

@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="appathon.groupstudy.activities.filterActivity">
+
+    <item android:id="@+id/confirm"
+        android:title="@string/confirmFilters"
+        android:icon="@drawable/ic_action_name"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom"
+        />
+</menu>

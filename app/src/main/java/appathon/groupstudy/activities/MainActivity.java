@@ -84,6 +84,10 @@ public class MainActivity extends ActionBarActivity {
             Intent myintent = new Intent(this,addGroup.class);
             startActivity(myintent);
         }
+        if(id == R.id.Filters){
+            Intent myIntent = new Intent(this,filterActivity.class);
+            startActivity(myIntent);
+        }
 
         return super.onOptionsItemSelected(item);
     }

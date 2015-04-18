@@ -1,3 +1,9 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    android:fillViewport="true">
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -23,38 +29,33 @@
         android:layout_alignParentStart="true"
         android:inputType="text"/>
 
+    <!--Class Label-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/class_label"
-        android:id="@+id/textView2"
+        android:layout_marginTop="20dp"
+        android:id="@+id/class_label"
         android:layout_below="@+id/title_textbox"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-    <!--Class Text Box-->
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/class_textbox"
-        android:layout_below="@+id/textView2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/title_textbox"
-        android:layout_alignEnd="@+id/title_textbox" />
 
+    <!--Class Text Box-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Location"
         android:id="@+id/textView3"
-        android:layout_below="@+id/class_textbox"
+        android:layout_marginTop="20dp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/class_choices" />
 
+    <!--Dropdown for Locations-->
     <Spinner
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/spinner"
         android:entries="@array/location_arrays"
@@ -63,6 +64,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+    <!--Additional info label-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -74,6 +76,7 @@
         android:layout_marginTop="20dp"
         android:layout_alignParentStart="true" />
 
+    <!--Additional info Textbox-->
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -82,5 +85,17 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@id/additional"/>
 
+    <!--Drop Down for classes-->
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/class_choices"
+        android:entries="@array/classes_array"
+        android:prompt="@string/classes_prompt"
+        android:layout_below="@+id/class_label"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 
 </RelativeLayout>
+</ScrollView>
