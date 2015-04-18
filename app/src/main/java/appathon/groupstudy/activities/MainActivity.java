@@ -1,5 +1,6 @@
 package appathon.groupstudy.activities;
 
+import android.content.Intent;
 import android.database.DataSetObserver;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -74,6 +75,11 @@ public class MainActivity extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+        if(id == R.id.add){
+            //Start the add group activity
+            Intent myintent = new Intent(this,addGroup.class);
+            startActivity(myintent);
         }
 
         return super.onOptionsItemSelected(item);

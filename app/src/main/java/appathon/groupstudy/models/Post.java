@@ -17,7 +17,7 @@ public class Post implements Comparable<Post>, Serializable {
     private String id;
     //    private String user_id;
     private long timePosted;
-    public Post(String title, String content, String user_id)
+    public Post(String title, String content)
     {
         this.title = title;
         this.content = content;
