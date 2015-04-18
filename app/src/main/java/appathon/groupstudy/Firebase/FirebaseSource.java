@@ -58,7 +58,7 @@ public class FirebaseSource implements IFirebaseSource {
                 Map<String, Map<String, String>> posts = (Map) dataSnapshot.getValue();
                 fillMaps.clear();
 
-                for(String postId : posts.keySet()){
+                for(String postId : posts.keySet()) {
 
                     Map<String, String> postInfo = posts.get(postId);
 
