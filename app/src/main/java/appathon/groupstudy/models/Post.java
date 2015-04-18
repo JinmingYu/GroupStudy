@@ -1,38 +1,30 @@
 package appathon.groupstudy.models;
 
-import com.firebase.client.Firebase;
-
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * Created by Jinming on 4/17/2015.
  */
 public class Post implements Comparable<Post>, Serializable {
 
-    private String title;
-    private String content;
     private String id;
-    //    private String user_id;
+    private String title;
+    private String className;
+    private String location;
+    private String additionalInformation;
+
     private long timePosted;
-    public Post(String title, String content)
+
+    public Post(String title, String className, String location, String additionalInformation)
     {
         this.title = title;
-        this.content = content;
+        this.className = className;
+        this.location = location;
+        this.additionalInformation = additionalInformation;
+
         this.id = null;
-//        this.user_id = user_id;
         timePosted = System.currentTimeMillis();
     }
-
-//    public String getUser_id() {
-//        return user_id;
-//    }
-//
-//    public void setUser_id(String user_id) {
-//        this.user_id = user_id;
-//    }
 
     public String getTitle() {
         return title;
@@ -40,14 +32,6 @@ public class Post implements Comparable<Post>, Serializable {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
     }
 
     public String getId() {
@@ -59,6 +43,30 @@ public class Post implements Comparable<Post>, Serializable {
 
     public long getTimePosted() {
         return timePosted;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getAdditionalInformation() {
+        return additionalInformation;
+    }
+
+    public void setAdditionalInformation(String additionalInformation) {
+        this.additionalInformation = additionalInformation;
     }
 
     @Override
@@ -77,6 +85,4 @@ public class Post implements Comparable<Post>, Serializable {
         Post p = (Post)o;
         return p.getId() == getId();
     }
-
-
 }
