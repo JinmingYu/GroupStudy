@@ -15,9 +15,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-/**
- * Created by Alex on 3/5/2015.
- */
 public class FirebaseSource implements IFirebaseSource {
 
     private Firebase root;

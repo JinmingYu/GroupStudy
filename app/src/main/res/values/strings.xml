@@ -19,4 +19,7 @@
         <item>Library</item>
         <item>Tech Square</item>
     </string-array>
+    <string name="title_activity_filter">filterActivity</string>
+
+    <string name="hello_world">Hello world!</string>
 </resources>
