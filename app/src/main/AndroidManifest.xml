@@ -19,7 +19,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:windowSoftInputMode="adjustResize"
             android:name=".activities.addGroup"
             android:label="@string/title_activity_add_group"
             android:parentActivityName=".activities.MainActivity" >
