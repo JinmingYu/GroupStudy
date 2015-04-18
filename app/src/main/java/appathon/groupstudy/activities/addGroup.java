@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -15,7 +16,8 @@ import appathon.groupstudy.R;
 public class addGroup extends ActionBarActivity {
 
     private Spinner spinner;
-    private Button btnSubmit;
+    private EditText title;
+    private EditText class_text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,8 @@ public class addGroup extends ActionBarActivity {
     public void addListenerOnSpinnnerItemSeletion(){
         spinner = (Spinner)findViewById(R.id.spinner);
         //Waits for selection of items
+        title = (EditText)findViewById(R.id.title_textbox);
+        class_text = (EditText)findViewById(R.id.class_textbox);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -57,9 +61,13 @@ public class addGroup extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        //Submit button was pressed
+        if(id == R.id.submit_check){
+            //Need to send things to Firebase
+
+            //then close the app
+            finish();
+
         }
 
         return super.onOptionsItemSelected(item);
