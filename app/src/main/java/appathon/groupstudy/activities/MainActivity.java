@@ -42,14 +42,6 @@ public class MainActivity extends ActionBarActivity {
 
         // prepare the list of all records
         List<HashMap<String, String>> fillMaps = new ArrayList<HashMap<String, String>>();
-        for(int i = 0; i < 10; i++){
-            HashMap<String, String> map = new HashMap<String, String>();
-            map.put("title", "Title " + i);
-            map.put("class", "CS " + i);
-            map.put("location", "Klaus");
-            map.put("additional_info", "Study group in Klaus 1234. Come join us. We have pizza!");
-            fillMaps.add(map);
-        }
 
         // fill in the grid_item layout
         SimpleAdapter adapter = new SimpleAdapter(this, fillMaps, R.layout.study_group_list_item, from, to);
@@ -86,9 +78,21 @@ public class MainActivity extends ActionBarActivity {
         }
         if(id == R.id.Filters){
             Intent myIntent = new Intent(this,filterActivity.class);
-            startActivity(myIntent);
+            startActivityForResult(myIntent, filterActivity.REQUEST_CODE);
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == filterActivity.REQUEST_CODE && resultCode == RESULT_OK) {
+            List<String> filterOptions = data.getStringArrayListExtra("filter_options");
+            firebaseSource.setFilterOptions(filterOptions);
+            firebaseSource.updateListView();
+        }
+
     }
 }

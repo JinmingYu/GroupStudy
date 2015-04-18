@@ -23,4 +23,7 @@ public interface IFirebaseSource
 
     void bindToList(List<HashMap<String, String>> fillMaps, SimpleAdapter adapter);
 
+    void updateListView();
+
+    public void setFilterOptions(List<String> filterOptions);
 }

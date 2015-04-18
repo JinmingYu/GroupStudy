@@ -15,6 +15,7 @@ import appathon.groupstudy.R;
 
 public class filterActivity extends ActionBarActivity {
 
+    public static final int REQUEST_CODE = 1000;
     ListView listView;
     ArrayAdapter<String> adapter;
     @Override
@@ -59,14 +60,13 @@ public class filterActivity extends ActionBarActivity {
                     selectedItems.add(adapter.getItem(position));
                 }
             }
-            String[] outputStrArr = new String[selectedItems.size()];
-            for(int i =0; i< selectedItems.size();i++){
-                outputStrArr[i] = selectedItems.get(i);
-            }
+
             //TODO:could posibily turn in to post item and reload
             //Takes us back to the main intent and closes this one
-            Intent myIntent = new Intent(this,MainActivity.class);
-            startActivity(myIntent);
+
+            Intent returnIntent = new Intent();
+            returnIntent.putStringArrayListExtra("filter_options", selectedItems);
+            setResult(RESULT_OK,returnIntent);
             finish();
         }
 
